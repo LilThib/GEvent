@@ -7,26 +7,15 @@
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style_index.css"> <!-- Resource style -->
+        <link rel="stylesheet" href="css/style_index.css"> <!-- Resource style -->
+        <link rel="stylesheet" href="css/style.css"> <!-- General style -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous">
   	
 	<title>gEvent</title>
 </head>
 <body>
-	<header class="cd-main-header">
-		<div class="cd-main-header__logo"><a href="#0"><img src="img/logo_gevent_inlin.png" alt="Logo"></a></div>
-
-		<nav class="cd-main-nav js-main-nav">
-			<ul class="cd-main-nav__list">
-				<!-- inser more links here -->
-				<li><a href="v_index.html">Home</a></li>
-				<li><a href="v_maps.html">La carte</a></li>
-				<li><a href="#0">Connexion</a></li>
-			</ul>
-		</nav> <!-- cd-main-nav -->
-	</header>
-
-	<main>
+    <?php include './nav.php'; ?>
+    <main>
 		<div class="cd-fixed-bg cd-fixed-bg--1">
 			<div class="cd-fixed-bg__content">
                 <img style="width: 20%" src="../logo_gevent/logo_gevent_white_full.png"  alt="...">

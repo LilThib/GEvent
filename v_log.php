@@ -14,17 +14,6 @@ and open the template in the editor.
         <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
     </head>
     <body>
-        <header class="cd-main-header">
-            <div class="cd-main-header__logo"><a href="#0"><img src="img/logo_gevent_inlin.png" alt="Logo"></a></div>
-
-            <nav class="cd-main-nav js-main-nav">
-                <ul class="cd-main-nav__list">
-                    <!-- inser more links here -->
-                    <li><a href="v_index.html">Home</a></li>
-                    <li><a href="v_maps.html">La carte</a></li>
-                    <li><a href="#0">Connexion</a></li>
-                </ul>
-            </nav> <!-- cd-main-nav -->
-        </header>
+        <?php include './nav.php'; ?>
     </body>
 </html>
