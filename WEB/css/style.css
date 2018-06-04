@@ -28,19 +28,21 @@ body {
   font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   color: #3d3536;
-  background-color: white;
-}
-
-a {
-  color: #b4d7a8;
-  text-decoration: none;
-}
-html { 
   background: url(../img/andrew-knechel-95288-unsplash.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+}
+
+a {
+  color: #fcab10;
+  text-decoration: none;
+}
+
+a:hover
+{
+   color: #a22f2f;
 }
 
 .cd-main-header {
