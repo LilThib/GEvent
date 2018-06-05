@@ -1,5 +1,0 @@
-C:\Users\MICHAUDT_INFO\Desktop\TPI\C#\GEvent\GEvent\obj\Debug\GEvent.csprojResolveAssemblyReference.cache
-C:\Users\MICHAUDT_INFO\Desktop\TPI\C#\GEvent\GEvent\obj\Debug\MyTestGmap.frm_main.resources
-C:\Users\MICHAUDT_INFO\Desktop\TPI\C#\GEvent\GEvent\obj\Debug\GEvent.Properties.Resources.resources
-C:\Users\MICHAUDT_INFO\Desktop\TPI\C#\GEvent\GEvent\obj\Debug\GEvent.csproj.GenerateResource.Cache
-C:\Users\MICHAUDT_INFO\Desktop\TPI\C#\GEvent\GEvent\obj\Debug\GEvent.csproj.CoreCompileInputs.cache
