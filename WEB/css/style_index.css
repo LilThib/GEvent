@@ -4,6 +4,13 @@
 Resource style 
 
 -------------------------------- */
+html {
+  font-size: 62.5%;
+}
+
+body{
+    font-size: 1.6rem;
+}
 
 .cd-fixed-bg {
   position: relative;
@@ -61,7 +68,7 @@ Resource style
     font-size: 4.8rem;
     font-weight: 300;
   }
-  @supports (background-attachment: fixed) {
+  @supports (background-attachment: fixed){
     /* fix bug on IE11 and below */
     .cd-fixed-bg {
       background-attachment: fixed;

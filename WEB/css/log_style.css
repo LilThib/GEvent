@@ -14,37 +14,3 @@ and open the template in the editor.
     margin-top: 100px; 
     padding: 25px 0px 25px 0px;
 }
-
-.btn-outline-primary
-{
-    border-color: #fcab10;
-    color: #fcab10;
-}
-
-.btn-outline-primary:hover
-{
-    background-color: #fcab10;
-    border-color: #fcab10;
-    color: white;
-}
-
-.btn-primary:active
-{
-    background-color: #fcab10;
-    border-color: #fcab10;
-    color: white;
-}
-
-.btn-primary:hover
-{
-    background-color: orangered;
-    border-color: orangered;
-    color: white;
-}
-
-.btn-primary
-{
-    background-color: #fcab15;
-    border-color: #fcab15;
-    color: white;
-}

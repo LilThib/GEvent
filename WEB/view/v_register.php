@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
@@ -15,23 +10,23 @@ and open the template in the editor.
     </head>
     <body>
         <div class="container">
-            <?php include './nav.php'; ?>
+            <?php include 'view/v_nav.php'; ?>
             <div class="row justify-content-center" style="margin-top: 10%">
                 <div class="col-md-8">
                     <div class="card">
                         <header class="card-header">
-                            <a href="v_login.php" class="float-right btn btn-lg  btn-outline-primary">Connexion</a>
+                            <a href="c_login.php" class="float-right btn btn-lg  btn-outline-primary">Connexion</a>
                             <h2 class="card-title mt-2">Inscrivez-vous</h2>
                         </header>
                         <article class="card-body">
-                            <form class="col-md-10" style="margin-left: 8%">
+                            <form class="col-md-10" style="margin-left: 8%" action="c_register.php" method="POST">
                                 <div class="form-group">
                                     <label>Nom d'utilisateur</label>
-                                    <input type="username" class="form-control" placeholder="">
+                                    <input type="username" class="form-control" placeholder="" name="username" value="<?= $username ?>">
                                 </div>
                                 <div class="form-group">
                                     <label>Adresse mail</label>
-                                    <input type="email" class="form-control" placeholder="">
+                                    <input type="email" class="form-control" placeholder="" name="email" value="<?= $email ?>">                                   
                                     <small class="form-text text-muted">Votre email restera confidentiel</small>
                                 </div> <!-- form-group end.// -->
                                 <div class="form-row">
@@ -51,16 +46,17 @@ and open the template in the editor.
                                 </div> <!-- form-row.// -->
                                 <div class="form-group">
                                     <label>Mot de passe</label>
-                                    <input class="form-control" type="password">
+                                    <input class="form-control" type="password" name="pwd1">
                                     <small class="form-text text-muted">Longueur minimum: 8 caractères</small>
                                 </div> <!-- form-group end.// -->
                                 <div class="form-group">
                                     <label>Répeter le mot de passe</label>
-                                    <input class="form-control" type="password">
+                                    <input class="form-control" type="password" name="pwd2">
                                 </div> <!-- form-group end.// -->  
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-lg btn-primary btn-block">S'inscrire</button>
-                                </div> <!-- form-group// -->      
+                                    <button type="submit" name="submitRegister" class="btn btn-lg btn-primary btn-block">S'inscrire</button>
+                                </div> <!-- form-group// -->
+                                <?php echo $msg; ?>
                                 <small class="text-muted">By clicking the 'Sign Up' button, you confirm that you accept our <br> Terms of use and Privacy Policy.</small>                                          
                             </form>
                         </article> <!-- card-body end .// -->

@@ -8,15 +8,25 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title></title>
+
+        <!-- Bootsrap style -->
         <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
         <link rel="stylesheet" href="css/style.css"> <!-- General style -->
-        <link rel="stylesheet" href="css/log_style.css"> <!-- Specific style -->
-        <link href="css/ios_switch.css" rel="stylesheet"> <!-- Switch style -->
+        <link rel="stylesheet" href="css/v_CRUD-Event_style.css"> <!-- Specific style -->
+
+        <!-- Date picker style -->
+        <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     </head>
+</head>
     <body>
         <div class="container">
-            <?php include './nav.php'; ?>
+            <?php include 'view/v_nav.php'; ?>
             <div class="row justify-content-center" style="margin-top: 10%">
                 <div class="col-md-8">
                     <div class="card">
@@ -27,11 +37,20 @@ and open the template in the editor.
                             <form class="col-md-10" style="margin-left: 8%">
                                 <div class="form-group">
                                     <label>Nom de l'évènement</label>
-                                    <input type="text" class="form-control" placeholder="">
+                                    <input type="text" name="name" class="form-control" placeholder="">
                                 </div>
                                 <div class="form-group">
+                                    <label>Date</label>
+                                    <input id="datepicker" width="300" />
+                                </div>
+                                <script>
+                                    $('#datepicker').datepicker({
+                                        uiLibrary: 'bootstrap4'
+                                    });
+                                </script>
+                                <div class="form-group">
                                     <label>Description</label>
-                                    <textarea class="form-control" placeholder=""></textarea>
+                                    <textarea name="description" class="form-control" placeholder=""></textarea>
                                     <small class="form-text text-muted">N'hésitez-pas a mettre un maximum d'information</small>
                                 </div>
                                 <div class="form-group">
@@ -39,7 +58,7 @@ and open the template in the editor.
                                     <div class="">
                                         <fieldset>
                                             <div class="form-group">
-                                                <input id="user_input_autocomplete_address" name="user_input_autocomplete_address"
+                                                <input name="adress" id="user_input_autocomplete_address" name="user_input_autocomplete_address"
                                                        class="form-control" placeholder="Start typing your address...">
                                             </div>
                                             <div class="form-group">
@@ -91,7 +110,7 @@ and open the template in the editor.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-lg btn-primary btn-block">Créer l'évènement</button>
+                                    <button type="submit" name="submitAddEvent" class="btn btn-lg btn-primary btn-block">Créer l'évènement</button>
                                 </div> <!-- form-group// -->      
                                 <small class="text-muted">Tous les paramètres de l'évènement peuvent être modifié ultérieurement</small>                                          
                             </form>

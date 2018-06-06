@@ -14,7 +14,7 @@
         <title>gEvent</title>
     </head>
     <body>
-        <?php include './nav.php'; ?>
+        <?php include 'view/v_nav.php'; ?>
         <main>
             <div id="map"></div>
             <script>

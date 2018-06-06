@@ -20,12 +20,7 @@ Primary style
           box-sizing: border-box;
 }
 
-html {
-  font-size: 62.5%;
-}
-
 body {
-  font-size: 1.6rem;
   font-family: "Roboto", sans-serif;
   color: #3d3536;
   background: url(../img/andrew-knechel-95288-unsplash.jpg) no-repeat center center fixed; 
@@ -34,6 +29,57 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.card
+{
+    margin-bottom: 5%;
+}
+
+
+/* -------------------------------- 
+
+Button style
+
+-------------------------------- */
+.btn-outline-primary
+{
+    border-color: #fcab10;
+    color: #fcab10;
+}
+
+.btn-outline-primary:hover
+{
+    background-color: #fcab10;
+    border-color: #fcab10;
+    color: white;
+}
+
+.btn-primary:active
+{
+    background-color: #fcab10;
+    border-color: #fcab10;
+    color: white;
+}
+
+.btn-primary:hover
+{
+    background-color: orangered;
+    border-color: orangered;
+    color: white;
+}
+
+.btn-primary
+{
+    background-color: #fcab15;
+    border-color: #fcab15;
+    color: white;
+}
+
+/* -------------------------------- 
+
+Header style
+
+-------------------------------- */
 
 a {
   color: #fcab10;
@@ -155,7 +201,7 @@ a:hover
     color: #3d3536;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.4rem;
+    font-size: initial;
   }
   .cd-main-nav__list a:hover {
     color: #e8d935;
