@@ -2,34 +2,49 @@
 
 require_once 'model/events.php';
 require_once 'model/functions.php';
+require_once 'model/friends.php';
+
+if (isset($_SESSION['logged'])) {
+    $userLoggedId = $_SESSION['UserLogged']['idUser'];
+    $friends = getFriendOf($userLoggedId);
+} else {
+    header("location: index.php");
+    exit();
+}
+
 
 $msg = "";
 $type = "danger";
 
 $name = (empty($_POST['name'])) ? '' : $_POST['name'];
-$description = (empty($_POST['email'])) ? '' : $_POST['email'];
+$description = (empty($_POST['description'])) ? '' : $_POST['description'];
 $date = (empty($_POST['date'])) ? '' : $_POST['date'];
+$adress = (empty($_POST['adress'])) ? '' : $_POST['adress'];
+$place_name = (empty($_POST['place_name'])) ? '' : $_POST['place_name'];
 
-
+var_dump($_POST['guest']);
 
 if (filter_has_var(INPUT_POST, 'submitAddEvent')) {
-    $username = trim(filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING));
-    $email = trim(filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING));
-    $pwd1 = $_POST['pwd1'];
-    $pwd2 = $_POST['pwd2'];
+    $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING));
+    $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING));
+    $date = trim(filter_input(INPUT_POST, 'date', FILTER_SANITIZE_STRING));
+    $adress = trim(filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_STRING));
+    $place_name = trim(filter_input(INPUT_POST, 'place_name', FILTER_SANITIZE_STRING));
 
-    if ($email == "") {
-        $msg = "L'email ne peut pas être vide";
-    } elseif ($pwd1 != $pwd2) {
-        $msg = "Les mots de passe sont différents";
-    } elseif (strlen($pwd1) < 8) {
-        $msg = "Le mot de passe est trop court";
-    } elseif (UserExsist($username)) {
-        $msg = "Le pseudo n'est pas disponible";
+    if ($_POST['public'] == 'private') {
+        $private = true;
+        foreach ($_POST['guest'] as $value) {
+            
+        }
     } else {
-        addUser($username, $email, $pwd1);
-        $username = "";
-        $email = "";
+        $private = false;
+    }
+
+    if ($name == "" || $description == "" || $date == "" || $adress = "" || $place_name == "") {
+        $msg = "Tous les champs doivent être remplis";
+    } else {
+        addEvent($name, $description, $date, $private, $lat, $lng, $place_name, $adress, $idUser, $validate);
+
         $msg = "Votre compte a été créer vous pouvez vous <a href=\"c_login.php\">connecter</a>";
         $type = "success";
     }

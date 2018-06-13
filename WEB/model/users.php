@@ -21,6 +21,8 @@ function getUserByUsername($uName) {
     return $request->fetch();
 }
 
+
+
 function getId($uName) {
     $db = myPdo();
     $request = $db->prepare("SELECT `idUser` FROM `t_users` WHERE `username` = :username");

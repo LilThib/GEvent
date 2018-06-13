@@ -1,6 +1,22 @@
+$(function () {
+    $('#private').change(function () {
+        if ($('#private').is(':checked')) {
+            $("#guestlist").removeAttr('hidden');
+        }
+    });
+});
+
+$(function () {
+    $('#public').change(function () {
+        if ($('#public').is(':checked')) {
+            $("#guestlist").attr("hidden", "hidden");
+        }
+    });
+});
+
+
 function initializeAutocomplete(id) {
     var element = document.getElementById(id);
-
 
     if (element) {
         var defaultBounds = new google.maps.LatLngBounds(new google.maps.LatLng(46.2111, 6.1028));
