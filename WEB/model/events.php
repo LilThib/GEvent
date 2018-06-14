@@ -4,14 +4,40 @@ require_once 'dbUtil.php';
 session_start();
 
 function getEvents() {
-    $db = myPdo;
+    $db = myPdo();
     $sql = "SELECT * FROM events, users WHERE events.idUser = users.idUser";
     $reponse = $db->query($sql);
     return $reponse;
 }
 
+function getEvent($idEvent) {
+    $db = myPdo();
+    $request = $db->prepare("SELECT * FROM events WHERE idEvent = :idEvent");
+    $reponse = $request->execute(array(
+        'idEvent' => $idEvent
+    ));
+    if ($reponse) {
+        return $request->fetch(PDO::FETCH_ASSOC); // Retourne un tableau associatif  
+    } else {
+        return array();
+    }
+}
+
+
+function getEventsFromSpecificUser($idUser) {
+    $db = myPdo();
+    $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");;
+    $request->execute(array(
+        'idUser' => $idUser
+    ));
+
+    return $request;
+    
+}
+
+
 function addEvent($name, $description, $date, $private, $lat, $lng, $place_name, $adress, $idUser, $validate = NULL) {
-    $db = myPdo;
+    $db = myPdo();
     $request = $db->prepare("INSERT INTO `t_events`(`name`, `description`,`date`"
             . ", `private`, `validate`,`lat`, `lng`, `place_name`, `adress`, `idUser`)"
             . " VALUES (:name, :description, :date, :private, :validate, :lat, :lng,"
@@ -28,6 +54,7 @@ function addEvent($name, $description, $date, $private, $lat, $lng, $place_name,
         'place_name' => $place_name,
         'adress' => $adress,
     ));
+    return $db->lastInsertId();
 }
 
 function deleteEvent($idEvent) {
@@ -63,18 +90,6 @@ function UpdateEvents($id, $titre, $date, $description, $utilisateur) {
     ));
 }
 
-function getEvent($idEvent) {
-    $db = myPdo;
-    $request = $db->prepare("SELECT * FROM events WHERE idEvent = :idEvent");
-    $reponse = $request->execute(array(
-        'idEvent' => $idEvent
-    ));
-    if ($reponse) {
-        return $request->fetch(PDO::FETCH_ASSOC); // Retourne un tableau associatif  
-    } else {
-        return array();
-    }
-}
 
 function EventExsist($title) {
     $db = myPdo;

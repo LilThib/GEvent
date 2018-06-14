@@ -1,4 +1,6 @@
 <?xml version="1.0"?>
 <markers>
   <marker name="test (accepted)" description="sdasdas" lat="2" lng="2" date="2018-06-21 00:00:00" content=""/>
+  <marker name="tedsfd" description="gfsgfsg" lat="45.187374" lng="5.7399717" date="0000-00-00 00:00:00" content=""/>
+  <marker name="Test affichage carte" description="Test description" lat="46.18485" lng="6.1935861" date="2018-06-18 00:00:00" content=""/>
 </markers>

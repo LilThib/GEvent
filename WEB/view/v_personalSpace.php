@@ -20,12 +20,12 @@ and open the template in the editor.
 
         <?php include 'v_nav.php'; ?>
         <div class="col-md-4">
-            <div class="white-transparent-box" id="panel-search-friend" style="height: 80px; margin-top: 15%; margin-left: 5%; background-color: rgba(255,255,255,0.5); border-radius: 5px;">
+            <div class="white-transparent-box" id="panel-search-friend" style="height: 80px; margin-top: 15%; margin-left: 5%;">
                 <input placeholder="Search.." type="text">
                 <button type="button" class="btn btn-primary" ><img src="img/glyphicons/glyphicons/png/glyphicons-28-search.png"></button>
             </div>
 
-            <div data-simplebar id="panel-display-friend" class="white-transparent-box" style="min-height: 400px; max-height: 700px; margin-top: 10px; margin-left: 5%; background-color: rgba(255,255,255,0.5); border-radius: 5px; overflow-y: hidden ">
+            <div data-simplebar id="panel-display-friend" class="white-transparent-box" style="min-height: 400px; max-height: 700px; margin-top: 10px; margin-left: 5%;">
                 <div class="chip">
                     <img src="img/img_avatar.png" alt="Person" width="96" height="96">
                     John Doe <?= $userLoggedId ?>

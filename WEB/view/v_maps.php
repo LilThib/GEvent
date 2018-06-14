@@ -13,10 +13,38 @@
 
         <title>gEvent</title>
     </head>
-    <body>
+    <body style="overflow-x: hidden">
         <?php include 'view/v_nav.php'; ?>
         <main>
-            <div id="map"></div>
+            <div class="row">
+                <div class="col-md-9 pl-5">             
+                    <div id="map" style="margin-top: 7%"></div>
+                </div>
+                <div class="col-md-3 pr-5" style="margin-top: 5%">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Tous les évènements (...)</h1>
+                        </div>
+                    </div>
+                    <div class="Events">
+                        <?php                       
+                        while ($event = $events->fetch()) {
+                            ?>
+                            <div class="card" style="font-size: medium; margin-bottom: 5px;">
+                                <div class="card-body">
+                                    <h2 class="card-title"><?= $event['name'] ?></h2>
+                                    <h3 class="card-subtitle mb-2 text-muted"><?= $event['date'] ?></h3>
+                                    <p class="card-text"><?= $event['description'] ?></p>
+                                    <a href="#" class="card-link">Card link</a>
+                                    <a href="#" class="card-link">Another link</a>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
             <script>
                 function downloadUrl(url, callback) {
                     var request = window.ActiveXObject ?
@@ -45,7 +73,7 @@
                         mapTypeControl: true,
                         mapTypeControlOptions: {
                             style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-                            position: google.maps.ControlPosition.TOP_CENTER
+                            position: google.maps.ControlPosition.TOP_BOTTOM
                         },
                         zoomControl: true,
                         zoomControlOptions: {
@@ -54,7 +82,7 @@
                         scaleControl: true,
                         streetViewControl: true,
                         streetViewControlOptions: {
-                            position: google.maps.ControlPosition.LEFT_TOP
+                            position: google.maps.ControlPosition.RIGHT_CENTER
                         },
                         fullscreenControl: true
 

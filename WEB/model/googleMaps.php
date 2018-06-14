@@ -1,9 +1,9 @@
 <?php
 require_once 'dbUtil.php';
 
-session_start();
 
-function ExtractMarkerFromBDD() {
+
+function ExtractEventsFromBDD() {
 
 // Start XML file, create parent node
     $dom = new DOMDocument("1.0");
@@ -35,6 +35,7 @@ function ExtractMarkerFromBDD() {
 
 function geocode($adress) {
     $json_adress = str_replace(" ", "+", $adress);
-    $response = file_get_contents("https://maps.googleapis.com/maps/api/geocode/json?address={$json_adress}&key=AIzaSyDSom_03mhi45ixDwuHHibM9ZsoCyHrMs0");
-    return $response;
+    $response = file_get_contents("https://maps.googleapis.com/maps/api/geocode/xml?address={$json_adress}&key=AIzaSyDSom_03mhi45ixDwuHHibM9ZsoCyHrMs0");
+    $xml = simplexml_load_string($response);
+    return $xml;
 }

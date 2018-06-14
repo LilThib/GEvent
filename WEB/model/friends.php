@@ -12,3 +12,12 @@ function getFriendOf($idUser) {
 
     return $request;
 }
+
+function AddGuestOnEvent($idEvent, $idUser) {
+    $db = myPdo();
+    $request = $db->prepare("INSERT INTO `t_invite`(`idUser`, `idEvent`) VALUES (:idUser, :idEvent)");
+    $request->execute(array(
+        'idUser' => $idEvent,
+        'idEvent' => $idUser
+    ));
+}
