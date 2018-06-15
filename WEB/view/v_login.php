@@ -25,7 +25,7 @@ and open the template in the editor.
                         <article class="card-body">
                             <form action="c_login.php" method="POST" class="col-md-10" style="margin-left: 8%">
                                 <div class="form-group">
-                                    <label>Nom d'utilisateur</label>
+                                    <label>Nom d'utilisateur ou email</label>
                                     <input type="username" class="form-control" placeholder="" name="username" value="<?= $username ?>">
                                 </div>
 

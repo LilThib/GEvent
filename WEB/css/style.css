@@ -44,6 +44,15 @@ body {
     overflow-y: hidden;
 }
 
+.modal-backdrop {
+    /* bug fix - no overlay */    
+    display: none;    
+}
+.modal-dialog {
+    margin: 2px auto;
+    z-index: 1200 !important;
+}
+
 .event_resume
 {
     padding: 0 25px;

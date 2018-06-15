@@ -5,10 +5,11 @@
             <?php if (isset($_SESSION['logged'])) {
                 ?>
             <li><a href="index.php"></a></li>
-            <li><a href="c_maps.php">La carte</a></li>
+                <li><a href="c_maps.php">La carte</a></li>
                 <li><a href="c_CRUD-Event.php">Créer un évènement</a></li>
                 <li><a href="c_personalSpace.php">Espace Personnel</a></li>
-                    <li><a href="c_logout.php">Déconnexion</a></li>
+                <li><a href="c_logout.php">Déconnexion</a></li>
+                    <li style="font-size: medium">Bienvenue, <?= $_SESSION['UserLogged']['username'] ?></li>
 
                 <?php } else { ?>
                     <li><a href="index.php">Accueil</a></li>

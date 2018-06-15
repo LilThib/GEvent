@@ -1,4 +1,5 @@
 <?php
+require_once 'dbUtil.php';
 
 function getFriendOf($idUser) {
     $db = myPdo();
@@ -13,7 +14,20 @@ function getFriendOf($idUser) {
     return $request;
 }
 
-function AddGuestOnEvent($idEvent, $idUser) {
+function getFriendRequest($idUser) {
+    
+}
+
+function addFriend($idUser, $idFriend) {
+    $db = myPdo();
+    $request = $db->prepare("INSERT INTO `t_friendship`(`user_ask`, `user_receive`) VALUES (:idUser,:idFriend)");
+    $request->execute(array(
+        'idUser' => $idUser,
+        'idFriend' => $idFriend
+    ));
+}
+
+function addGuestOnEvent($idEvent, $idUser) {
     $db = myPdo();
     $request = $db->prepare("INSERT INTO `t_invite`(`idUser`, `idEvent`) VALUES (:idUser, :idEvent)");
     $request->execute(array(

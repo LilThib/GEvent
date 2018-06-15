@@ -92,26 +92,6 @@ function UserExsist($username) {
     return ($request->rowCount() > 0);
 }
 
-function UpdatePwd($pwd, $id) {
-    $db = myPdo();
-    $salt = sha1(rand(1, 1000));
-    $password = sha1(sha1($pwd) . $salt);
-    $request = $db->prepare("UPDATE users SET Pwd = :Pwd, Sel = $salt WHERE idUser = :id");
-    $request->execute(array(
-        'id' => $id,
-        'Pwd' => $password
-    ));
-}
-
-function GetSalt($pseudo) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT Sel FROM users WHERE Pseudo = :pseudo");
-    $request->execute(array(
-        'pseudo' => $pseudo
-    ));
-    return $request->fetch()[0];
-}
-
 function CheckLogin($username, $pwd) {
     $db = myPdo();
     $pwd = sha1($pwd);
@@ -122,20 +102,6 @@ function CheckLogin($username, $pwd) {
     } else {
         return false;
     }
-}
-
-function CheckReinitEmail($pseudo, $email) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT * FROM users WHERE Pseudo = :pseudo AND Email = :email");
-    $request->execute(array("pseudo" => $pseudo, "email" => $email));
-    return ($request->rowCount() > 0);
-}
-
-function CheckReinitNum($pseudo, $num) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT * FROM users WHERE Pseudo = :pseudo AND Num = :num");
-    $request->execute(array("pseudo" => $pseudo, "num" => $num));
-    return ($request->rowCount() > 0);
 }
 
 function GetIdUserFromPseudo($pseudo) {
@@ -151,48 +117,3 @@ function GetIdUserFromPseudo($pseudo) {
     }
 }
 
-function StartPwdReinitialisation($pseudo) {
-    $db = myPdo();
-    $key = uniqid();
-    $idUser = GetIdUserFromPseudo($pseudo);
-    $ExpirationDate = date('h:i:s A', time() + 10800); // La clé est valable 3h
-    $request = $db->prepare("INSERT INTO `reinitkeys`(`ReinitKey`, `ExpirationDate`, `idUser`)"
-            . " VALUES (:key,:date,:id)");
-    $request->execute(array(
-        'key' => $key,
-        'date' => $ExpirationDate,
-        'id' => $idUser
-    ));
-}
-
-function CheckKey($key) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT `ReinitKey` ,`ExpirationDate` FROM `reinitkeys` WHERE `ReinitKey` = :key");
-    $request->execute(array(
-        'key' => $key
-    ));
-    if ($request->rowCount() > 0) {
-        $expirationDate = $request->fetch()[1];
-        $actualTime = time();
-
-        return $request->fetch()[0];
-    } else {
-        return false;
-    }
-}
-
-function CheckKeyWithPseudo($pseudo) {
-    
-}
-
-function SendReinitMessage($email, $url) {
-    
-}
-
-function SendReinitSMS($num, $url) {
-    
-}
-
-function PutCSV($param) {
-    
-}

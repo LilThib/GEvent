@@ -48,7 +48,7 @@ if (filter_has_var(INPUT_POST, 'submitAddEvent')) {
         echo $idEvent;
         if ($_POST['public'] == 'private') {
             foreach ($_POST['guest'] as $idGuest) {
-                AddGuestOnEvent($idGuest, $idEvent);
+                addGuestOnEvent($idGuest, $idEvent);
             }
         }
         $msg = "L'évènement a bien été créé";

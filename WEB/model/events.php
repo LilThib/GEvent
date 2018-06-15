@@ -23,18 +23,35 @@ function getEvent($idEvent) {
     }
 }
 
-
-function getEventsFromSpecificUser($idUser) {
+function getEventsOrganizedByUser($idUser) {
     $db = myPdo();
-    $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");;
+    $request = $db->prepare("SELECT * FROM `t_events` WHERE `idUser` = :idUser");
     $request->execute(array(
         'idUser' => $idUser
     ));
 
     return $request;
-    
 }
 
+function getEventsFromSpecificUser($idUser) {
+    $db = myPdo();
+    $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");
+    $request->execute(array(
+        'idUser' => $idUser
+    ));
+
+    return $request;
+}
+
+function getPublicEvents() {
+    $db = myPdo();
+    $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");
+    $request->execute(array(
+        'idUser' => $idUser
+    ));
+
+    return $request;
+}
 
 function addEvent($name, $description, $date, $private, $lat, $lng, $place_name, $adress, $idUser, $validate = NULL) {
     $db = myPdo();

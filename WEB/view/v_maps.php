@@ -35,9 +35,8 @@
                                     <h2 class="card-title"><?= $event['name'] ?></h2>
                                     <h3 class="card-subtitle mb-2 text-muted"><?= $event['date'] ?></h3>
                                     <p class="card-text"><?= $event['description'] ?></p>
-                                    <a href="#" class="card-link">Card link</a>
-                                    <a href="#" class="card-link">Another link</a>
-                                </div>
+                                        <a href="#" class="card-link">Détails de l'évènements</a>
+                                    </div>
                             </div>
                             <?php
                         }

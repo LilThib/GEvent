@@ -95,11 +95,14 @@ and open the template in the editor.
                                     while ($friend = $friends->fetch()) {
                                         ?>
                                         <div class="chip">
-                                            <img src="img/img_avatar.png" alt="Person" width="96" height="96">                                        
-                                            <?= $friend['username'] ?>
+                                                <img src="img/img_avatar.png" class="avatar-img"alt="Person" width="96" height="96">                                        
+                                                <?= $friend['username'] ?>
                                             <input class="form-check-input" type="checkbox" value="<?= $friend['idUser'] ?>" name="guest[]" id="defaultCheck1">
                                             </div>
-                                    <?php } ?>
+                                    <?php
+                                    }
+                                    $friends->closeCursor();
+                                    ?>
                                 </div>
                             </div>
                             <div class="form-group">
