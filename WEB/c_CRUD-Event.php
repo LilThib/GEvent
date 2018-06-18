@@ -7,7 +7,7 @@ require_once 'model/googleMaps.php';
 
 if (isset($_SESSION['logged'])) {
     $userLoggedId = $_SESSION['UserLogged']['idUser'];
-    $friends = getFriendOf($userLoggedId);
+    $friends = getFriendsOf($userLoggedId)[1];
 } else {
     header("location: index.php");
     exit();
@@ -26,7 +26,7 @@ $place_name = (empty($_POST['place_name'])) ? '' : $_POST['place_name'];
 if (filter_has_var(INPUT_POST, 'submitAddEvent')) {
     $name = trim(filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING));
     $description = trim(filter_input(INPUT_POST, 'description', FILTER_SANITIZE_STRING));
-    $date = $_POST['date    '];
+    $date = $_POST['date'];
     $adress = trim(filter_input(INPUT_POST, 'adress', FILTER_SANITIZE_STRING));
     $place_name = trim(filter_input(INPUT_POST, 'place_name', FILTER_SANITIZE_STRING));
 
@@ -45,10 +45,12 @@ if (filter_has_var(INPUT_POST, 'submitAddEvent')) {
         $msg = "Tous les champs doivent être remplis";
     } else {
         $idEvent = addEvent($name, $description, $date, $private, $lat, $lng, $place_name, $adress, $userLoggedId, 1);
-        echo $idEvent;
         if ($_POST['public'] == 'private') {
-            foreach ($_POST['guest'] as $idGuest) {
-                addGuestOnEvent($idGuest, $idEvent);
+            addGuestOnEvent($userLoggedId, $idEvent);
+            if (isset($_POST['guest'])) {
+                foreach ($_POST['guest'] as $idGuest) {
+                    addGuestOnEvent($idGuest, $idEvent);
+                }
             }
         }
         $msg = "L'évènement a bien été créé";

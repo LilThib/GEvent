@@ -2,8 +2,6 @@
 
 require_once 'dbUtil.php';
 
-session_start();
-
 function getUsers() {
     $db = myPdo();
     $sql = "SELECT * FROM users";
@@ -30,7 +28,11 @@ function getId($uName) {
         'username' => $uName
     ));
 
-    return $request->fetch()[0];
+    if ($request->rowCount() > 0) {
+        return $request->fetch()[0];
+    } else {
+        return "";
+    }
 }
 
 function addUser($username, $email, $pwd) {
@@ -101,19 +103,6 @@ function CheckLogin($username, $pwd) {
         return $request->fetch()[0];
     } else {
         return false;
-    }
-}
-
-function GetIdUserFromPseudo($pseudo) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT idUser FROM users WHERE Pseudo = :pseudo");
-    $request->execute(array(
-        'pseudo' => $pseudo
-    ));
-    if ($request->rowCount() > 0) {
-        return $request->fetch()[0];
-    } else {
-        return "";
     }
 }
 

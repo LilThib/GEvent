@@ -6,6 +6,8 @@
 * Version 09.04.2018 / PC / Codage initial
 */
 
+session_start();
+
 include 'dbConnectionInfo.php';
 
 /**

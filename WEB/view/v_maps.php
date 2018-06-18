@@ -23,23 +23,47 @@
                 <div class="col-md-3 pr-5" style="margin-top: 5%">
                     <div class="card">
                         <div class="card-body">
-                            <h1>Tous les évènements (...)</h1>
+                            <h1>Tous les évènements (<?= $nbEvents ?>)</h1>
                         </div>
                     </div>
                     <div class="Events">
-                        <?php                       
-                        while ($event = $events->fetch()) {
+                        <div class="card text-center mt-2 mb-2 pt-2 pb-2" style="font-size: medium">
+                            <h3><b>Évènements privés</b></h3>
+                        </div>
+                        <?php
+                        while ($privateEvent = $privateEvents->fetch()) {
                             ?>
                             <div class="card" style="font-size: medium; margin-bottom: 5px;">
                                 <div class="card-body">
-                                    <h2 class="card-title"><?= $event['name'] ?></h2>
-                                    <h3 class="card-subtitle mb-2 text-muted"><?= $event['date'] ?></h3>
-                                    <p class="card-text"><?= $event['description'] ?></p>
-                                        <a href="#" class="card-link">Détails de l'évènements</a>
-                                    </div>
+                                    <h2 class="card-title"><?= $privateEvent['name'] ?></h2>
+                                    <h3 class="card-subtitle mb-2 text-muted"><?= $privateEvent['date'] ?></h3>
+                                    <p class="card-text"><?= $privateEvent['description'] ?></p>
+                                    <a href="#" class="card-link">Détails de l'évènements</a>
+                                    <button type="button" class="btn btn-lg btn-primary ml-5" onclick="showEvent(<?= $privateEvent['lat'] ?>, <?= $privateEvent['lng'] ?>)">Voir sur la carte</button>
+                                </div>
                             </div>
                             <?php
                         }
+                        $privateEvents->closeCursor();
+                        ?>
+                        <div class="card text-center mt-2 mb-2 pt-2 pb-2" style="font-size: medium">
+                            <h3><b>Évènements publics</b></h3>
+                        </div>
+                        <?php
+                        while ($publicEvent = $publicEvents->fetch()) {
+                            ?>                      
+                            <div class="card" style="font-size: medium; margin-bottom: 5px;">
+                                <div class="card-body">
+                                    <h2 class="card-title"><?= $publicEvent['name'] ?></h2>
+                                    <h3 class="card-subtitle mb-2 text-muted"><?= $publicEvent['date']; ?></h3>
+                                    <p class="card-text"><?= $publicEvent['description'] ?></p>
+                                    <a href="#" class="card-link">Détails de l'évènements</a>
+                                    <button type="button" class="btn btn-lg btn-primary ml-5" onclick="showEvent(<?= $publicEvent['lat'] ?>, <?= $publicEvent['lng'] ?>)">Voir sur la carte</button>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                        $privateEvents->closeCursor();
                         ?>
                     </div>
                 </div>
@@ -62,6 +86,11 @@
                 }
 
                 function doNothing() {}
+
+                function showEvent(newLat, newLng) {
+                    var point = new google.maps.LatLng(newLat,newLng)
+                    map.setCenter(point);
+                }
 
                 function initMap() {
 

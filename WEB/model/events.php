@@ -1,13 +1,20 @@
 <?php
+
 require_once 'dbUtil.php';
 
-session_start();
 
 function getEvents() {
     $db = myPdo();
     $sql = "SELECT * FROM events, users WHERE events.idUser = users.idUser";
     $reponse = $db->query($sql);
     return $reponse;
+}
+
+function countValidateEvents() {
+    $db = myPdo();
+    $request = $db->prepare("SELECT * FROM t_events e WHERE e.validate = 2");
+    $request->execute();
+    return $request->rowCount();
 }
 
 function getEvent($idEvent) {
@@ -30,26 +37,22 @@ function getEventsOrganizedByUser($idUser) {
         'idUser' => $idUser
     ));
 
-    return $request;
-}
-
-function getEventsFromSpecificUser($idUser) {
-    $db = myPdo();
-    $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");
-    $request->execute(array(
-        'idUser' => $idUser
-    ));
-
-    return $request;
+    return array($request->rowCount(),$request);
 }
 
 function getPublicEvents() {
     $db = myPdo();
+    $request = $db->prepare("SELECT * FROM t_events e WHERE e.validate = 2 AND e.private = false");
+    $request->execute();
+    return $request;
+}
+
+function    getEventsFromSpecificUser($idUser) {
+    $db = myPdo();
     $request = $db->prepare("SELECT * FROM t_events e, t_invite i WHERE i.idEvent = e.idEvent AND i.idUser = :idUser and e.validate = 2");
     $request->execute(array(
         'idUser' => $idUser
     ));
-
     return $request;
 }
 
@@ -107,7 +110,6 @@ function UpdateEvents($id, $titre, $date, $description, $utilisateur) {
     ));
 }
 
-
 function EventExsist($title) {
     $db = myPdo;
     $request = $db->prepare("SELECT * FROM events WHERE title = :title");
@@ -115,11 +117,10 @@ function EventExsist($title) {
     return ($request->rowCount() > 0);
 }
 
-function DateEU($date)
-{
-   $jour = substr($date, 8, 9);
-   $mois = substr($date, 5, -3);
-   $annee = substr($date, 0, 4);
-   
-return "$jour.$mois.$annee";
+function DateEU($date) {
+    $jour = substr($date, 8, 9);
+    $mois = substr($date, 5, -3);
+    $annee = substr($date, 0, 4);
+
+    return "$jour.$mois.$annee";
 }

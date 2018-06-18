@@ -42,11 +42,11 @@ and open the template in the editor.
                         <form class="col-md-10" style="margin-left: 8%" method="POST" action="c_CRUD-Event.php">
                             <div class="form-group">
                                 <label>Nom de l'évènement</label>
-                                <input type="text" name="name" class="form-control" placeholder="" value="<?= $name ?>">
+                                <input type="text" name="name" class="form-control" required="" placeholder="" value="<?= $name ?>">
                             </div>
                             <div class="form-group">
                                 <label>Date</label>
-                                <input id="datepicker" width="300" name="date" value="<?= $date ?>">
+                                <input id="datepicker" required="" width="300" name="date" value="<?= $date ?>">
                             </div>
                             <script>
                                 $('#datepicker').datepicker({
@@ -55,20 +55,20 @@ and open the template in the editor.
                             </script>
                             <div class="form-group">
                                 <label>Description</label>
-                                <textarea name="description" class="form-control" placeholder="" ><?= $description ?></textarea>
+                                <textarea name="description" class="form-control" placeholder="" required=""><?= $description ?></textarea>
                                 <small class="form-text text-muted">N'hésitez-pas a mettre un maximum d'information</small>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Adresse</label>
                                 <fieldset>
                                     <div class="form-group">
-                                        <input name="adress" id="user_input_autocomplete_address" name="user_input_autocomplete_address" value="<?= $adress ?>"
+                                        <input name="adress" id="user_input_autocomplete_address"  required="" name="user_input_autocomplete_address" value="<?= $adress ?>"
                                                class="form-control" placeholder="Start typing your address...">
                                     </div>
                                     <div class="form-group">
                                         <label class=" control-label">Nom de l'endroit</label>
                                         <div class="">
-                                            <input id="place_name" name="place_name" type="text" placeholder="Parc de la grange" class="form-control" value="<?= $place_name ?>">
+                                            <input id="place_name" required="" name="place_name" type="text" placeholder="Parc de la grange" class="form-control" value="<?= $place_name ?>">
                                         </div>
                                     </div>
                                 </fieldset>                                      

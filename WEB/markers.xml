@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <markers>
+  <marker name="Pal&#xE9;o Festival" description="Le Pal&#xE9;o Festival Nyon, g&#xE9;n&#xE9;ralement appel&#xE9; Pal&#xE9;o, est le plus grand festival en plein air de Suisse &#xE0; Nyon et fait partie des &#xE9;v&#xE9;nements musicaux majeurs en Europe. Il dure six jours, six nuits, avec environ 230 000 spectateurs attendus, plus de 230 concerts et spectacles r&#xE9;partis sur six sc&#xE8;nes." lat="46.4023985" lng="6.2116272" date="2018-06-12 10:38:57" content=""/>
   <marker name="test (accepted)" description="sdasdas" lat="2" lng="2" date="2018-06-21 00:00:00" content=""/>
 </markers>

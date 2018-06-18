@@ -24,130 +24,65 @@ and open the template in the editor.
     <body>
         <?php include 'v_nav.php'; ?>
         <div class="row">
-            <div class="col-md-3">
-                <div class="white-transparent-box ml-4" id="panel-search-friend" style="height: 80px; margin-top: 20%;">
-                    <div class="input-group mb-3 mx-auto mt-4 col-md-10">
-                        <input type="text" class="form-control" placeholder="Nom de l'ami" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button type="button" class="btn btn-primary" ><img src="img/glyphicons/glyphicons/png/glyphicons-28-search.png"></button>
-                        </div>
-                    </div>
+            <div class="col-md-3 col-of ">
+                <div class="white-transparent-box ml-4 text-center" id="panel-search-friend" style="height: 80px; margin-top: 20%;">
+                    <h4 style="color: white" class="mt-4">Vos amis (<?= $nbFriends ?>)</h4>
                 </div>
                 <div data-simplebar id="panel-display-friend" class="white-transparent-box mt-2 ml-4 pt-2" style="min-height: 400px; max-height: 700px;">
                     <?php
                     while ($friend = $friends->fetch()) {
                         ?>
-                    <div class="chip">
+                        <div class="chip">
                             <img src="img/img_avatar.png" class="avatar-img" alt="Person" width="96" height="96">
                             <?= $friend['username'] ?>
-                            <button type="button" class="btn deleteCross" data-toggle="modal" data-target="#modalDelete<?= $friend['idUser'] ?>">
-                                <img src="img/icons8-delete-filled-50.png" width="30" height="30">
-                            </button>   
-                        </div> 
-                        <div class="modal" id="modalDelete<?= $friend['idUser'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h3 class="modal-title" id="exampleModalLabel">Confirmer</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <?php echo "Voulez-vous vraiment supprimer"; ?><br>
-                                            Cette action est irréversible. 
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-
-                                            <a href="deleteuser.php?id=<?php echo $donnees['idUser']; ?>">
-                                                <button type="button" class="btn btn-primary">Supprimer</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                        $friends->closeCursor();
-                        ?>
-                </div> 
-            </div>
-            <div class="col-md-3">
-                <div class="white-transparent-box" id="panel-search-friend" style="height: 80px; margin-top: 20%;">
-                    <div class="input-group mb-3 mx-auto mt-4 col-md-10">
-                        <h4 style="color: white">Vos demandes d'amitié</h4>
-                    </div>
-                </div>
-                <div data-simplebar id="panel-display-friend" class="white-transparent-box mt-2 pt-2" style="min-height: 400px; max-height: 700px;">
-                    <?php
-                    while ($friend = $friends->fetch()) {
-                        ?>
-                    <div class="chip">
-                            <img src="img/img_avatar.png" class="avatar-img" alt="Person" width="96" height="96">
-                            <?= $friend['username'] ?>
-                            <button type="button" class="btn deleteCross" data-toggle="modal" data-target="#modalDelete<?= $friend['idUser'] ?>">
-                                <img src="img/icons8-delete-filled-50.png" width="30" height="30">
-                            </button>   
-                        </div> 
-                        <div class="modal" id="modalDelete<?= $friend['idUser'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                        <h3 class="modal-title" id="exampleModalLabel">Confirmer</h3>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="form-group">
-                                            <?php echo "Voulez-vous vraiment supprimer"; ?><br>
-                                            Cette action est irréversible. 
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-
-                                            <a href="deleteuser.php?id=<?php echo $donnees['idUser']; ?>">
-                                                <button type="button" class="btn btn-primary">Supprimer</button>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                        }
-                        $friends->closeCursor();
-                        ?>
+                            <a href="c_deleteFriend.php?idUser=<?= $userLoggedId ?>&idFriend=<?= $friend['idUser'] ?>">
+                                <button type="button" class="btn deleteCross">
+                                    <img src="img/icons8-delete-filled-50.png" width="30" height="30">
+                                </button>   
+                            </a>
+                        </div>                     
+                        <?php
+                    }
+                    $friends->closeCursor();
+                    ?>
                 </div> 
             </div>
             <div class="col-md-3">
                 <div class="white-transparent-box" id="panel-search-friend" style="margin-top: 20%;">
                     <div class="input-group mb-3 mx-auto mt-4 col-md-10">
                         <h4 style="color: white">Ajouter un ami</h4>
-                        <div class="input-group mb-3 mx-auto mt-2">
-                            <input type="text" class="form-control" placeholder="Nom d'utilisateur" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button type="button" class="btn btn-primary" ><img src="img/glyphicons/glyphicons/png/glyphicons-28-search.png"></button>
+                        <form method="POST" action="c_personalSpace.php">
+                            <div class="input-group mb-3 mx-auto mt-2">
+                                <input type="text" class="form-control" placeholder="Nom d'utilisateur" name="username">                        
+                                <div class="input-group-append">
+                                    <button type="submit" name="addFriend" class="btn btn-primary" ><img src="img/glyphicons/glyphicons/png/glyphicons-28-search.png"></button>
+                                </div>                               
                             </div>
-                        </div>
+                            <?= $msgAddFriend ?>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-3">
-                <div data-simplebar id="panel-display-friend" class="white-transparent-box mt-4 ml-4 pt-2" style="height: 300px; max-height: 700px;">
-                    <div class="input-group mb-3 mx-auto mt-4 col-md-10">
-                        <h4 style="color: white">Vos évènements (...)</h4>
-                    </div>
-                </div> 
-            </div>
-            <div class="col-md-6">
-                <div data-simplebar id="panel-display-friend" class="white-transparent-box mt-4 pt-2" style="height: 300px; max-height: 700px;">
-
+            <div class="col-md-3 col-of ">
+                <div class="white-transparent-box ml-4 text-center" id="panel-search-friend" style="height: 80px; margin-top: 20%;">
+                    <h4 style="color: white" class="mt-4">Vos Évènements (<?= $nbEvents ?>)</h4>
+                </div>
+                <div data-simplebar id="panel-display-friend" class="white-transparent-box mt-2 ml-4 pt-2" style="min-height: 400px; max-height: 700px;">
+                    <?php
+                    while ($event = $events->fetch()) {
+                        ?>
+                        <div class="card" style="font-size: small; margin-bottom: 5px;">
+                            <div class="card-body">
+                                <h2 class="card-title"><?= $event['name'] ?></h2>
+                                <h3 class="card-subtitle mb-2 text-muted"><?= $event['date']; ?></h3>
+                                <p class="card-text"><?= $event['description'] ?></p>
+                                <a href="#" class="card-link">Détails de l'évènements</a>                                  
+                            </div>
+                        </div>                  
+                        <?php
+                    }
+                    $friends->closeCursor();
+                    ?>
                 </div> 
             </div>
         </div>
