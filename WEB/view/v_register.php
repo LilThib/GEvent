@@ -29,21 +29,6 @@
                                     <input type="email" class="form-control" placeholder="" name="email" value="<?= $email ?>">                                   
                                     <small class="form-text text-muted">Votre email restera confidentiel</small>
                                 </div> <!-- form-group end.// -->
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label>Ville</label>
-                                        <input type="text" class="form-control">
-                                    </div> <!-- form-group end.// -->
-                                    <div class="form-group col-md-6">
-                                        <label>Pays</label>
-                                        <select id="inputState" class="form-control">
-                                            <option> Choisissez...</option>
-                                            <option selected>Suisse</option>
-                                            <option>France</option>
-                                            <option>Belgique</option>
-                                        </select>
-                                    </div> <!-- form-group end.// -->
-                                </div> <!-- form-row.// -->
                                 <div class="form-group">
                                     <label>Mot de passe</label>
                                     <input class="form-control" type="password" name="pwd1">

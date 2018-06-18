@@ -32,7 +32,7 @@ and open the template in the editor.
                     <?php
                     while ($friend = $friends->fetch()) {
                         ?>
-                        <div class="chip">
+                    <div class="chip">
                             <img src="img/img_avatar.png" class="avatar-img" alt="Person" width="96" height="96">
                             <?= $friend['username'] ?>
                             <a href="c_deleteFriend.php?idUser=<?= $userLoggedId ?>&idFriend=<?= $friend['idUser'] ?>">
@@ -71,11 +71,11 @@ and open the template in the editor.
                     <?php
                     while ($event = $events->fetch()) {
                         ?>
-                        <div class="card" style="font-size: small; margin-bottom: 5px;">
+                        <div class="card" style="font-size: medium; margin-bottom: 5px;">
                             <div class="card-body">
-                                <h2 class="card-title"><?= $event['name'] ?></h2>
-                                <h3 class="card-subtitle mb-2 text-muted"><?= $event['date']; ?></h3>
-                                <p class="card-text"><?= $event['description'] ?></p>
+                                    <h4 class="card-title"><?= $event['name'] ?></h4>
+                                    <h5 class="card-subtitle mb-2 text-muted"><?= $event['date']; ?></h5>
+                                    <p class="card-text"><?= $event['description'] ?></p>
                                 <a href="#" class="card-link">Détails de l'évènements</a>                                  
                             </div>
                         </div>                  
